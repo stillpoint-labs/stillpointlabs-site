@@ -1,0 +1,12 @@
+{
+  "name": "stillpointlabs-site",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "stillpointlabs-site-borg",
+  "workspaceFolder": "/workspaces/stillpointlabs-site",
+  "features": {},
+  "postCreateCommand": "ln -sf /home/dev/.config/dotfiles/zsh/.zshrc /home/dev/.zshrc; ln -sf /home/dev/.config/dotfiles/zsh/.p10k.zsh /home/dev/.p10k.zsh; npm install",
+  "postStartCommand": "sudo mkdir -p /Users && sudo ln -sfn /home/dev /Users/noah; sudo chmod a+rw /run/host-services/ssh-auth.sock 2>/dev/null || true; ln -sf /home/dev/.config/dotfiles/zsh/.zshrc /home/dev/.zshrc; ln -sf /home/dev/.config/dotfiles/zsh/.p10k.zsh /home/dev/.p10k.zsh; if [ -f /home/dev/.config/dotfiles/claude/code/CLAUDE.md ]; then cp /home/dev/.config/dotfiles/claude/code/CLAUDE.md /home/dev/.claude/CLAUDE.md; else echo 'borg: dotfiles/claude not mounted — CLAUDE.md not synced' >&2; fi; cp /host-home/.claude.json /home/dev/.claude.json 2>/dev/null || true; sudo rm -rf /workspace 2>/dev/null; sudo ln -sfn /workspaces/stillpointlabs-site /workspace; sudo npm install -g @anthropic-ai/claude-code >/tmp/claude-update.log 2>&1 &",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "dev",
+  "updateRemoteUserUID": true
+}

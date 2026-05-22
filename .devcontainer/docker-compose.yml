@@ -1,0 +1,58 @@
+services:
+  # ── Base service — team-portable, no borg mounts ──────────────────────────
+  stillpointlabs-site-app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      # project files
+      - ..:/workspaces/stillpointlabs-site:cached
+      # shell
+      - ~/.config/dotfiles/zsh:/home/dev/.config/dotfiles/zsh:cached
+      - ~/.config/zsh:/home/dev/.config/zsh:cached
+      # editor
+      - ~/.config/nvim:/home/dev/.config/nvim:cached
+      # git + ssh
+      - ~/.ssh/config:/home/dev/.ssh/config:ro
+      - ~/.ssh/known_hosts:/home/dev/.ssh/known_hosts:ro
+      - ~/.gitconfig:/home/dev/.gitconfig:cached
+      - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
+      - ~/.config/gh:/home/dev/.config/gh:ro
+      # npm global packages (claude-code) — persists across rebuilds
+      - stillpointlabs_site_npm:/home/dev/.npm-global
+    working_dir: /workspaces/stillpointlabs-site
+    user: dev
+    command: sleep infinity
+    environment:
+      SSH_AUTH_SOCK: /run/host-services/ssh-auth.sock
+      ANTHROPIC_SDK_KEY: ${ANTHROPIC_SDK_KEY:-}
+      GH_TOKEN: ${GH_TOKEN:-}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+    networks:
+      - devnet
+
+  # ── Borg-enabled service — extends base, adds borg mounts ─────────────────
+  # Only starts when COMPOSE_PROFILES=borg (set automatically by drone up).
+  stillpointlabs-site-borg:
+    extends:
+      service: stillpointlabs-site-app
+    labels:
+      - dev.role=app
+    ports:
+      - "4323:4321"
+    volumes:
+      - ~/.claude:/home/dev/.claude:cached
+      - ~/.config/dotfiles/claude:/home/dev/.config/dotfiles/claude:cached
+      - ~/.config/borg:/home/dev/.config/borg:cached
+      # host home read-only — postStartCommand copies .claude.json fresh each start
+      - ~/:/host-home:ro
+    profiles:
+      - borg
+
+volumes:
+  stillpointlabs_site_npm:  # persists npm globals (claude-code) across image rebuilds
+
+networks:
+  devnet:
+    external: true
