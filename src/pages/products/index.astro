@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+const products = [
+  {
+    name: 'Reveal',
+    domain: 'reveal.photo',
+    tagline: 'The photograph you meant to take was already there.',
+    description:
+      'Upload your phone photos. We select the right photographic philosophy for each one, '
+      + 'write specific direction, and render a finished piece with an artist statement '
+      + 'explaining what we saw. The judgment a skilled photographer would apply — delivered '
+      + 'as a service, not a filter. Your snapshot treated as material worth taking seriously.',
+    href: 'https://reveal.photo',
+    accent: '#C4933F',
+  },
+  {
+    name: 'Ingle',
+    domain: 'ingle.co',
+    tagline: 'The family table, tended.',
+    description:
+      'From Scottish Gaelic aingeal — the hearth fire, the warm center of the home where '
+      + 'food was prepared and the family gathered. Ingle handles the logistics of meal '
+      + 'planning, grocery lists, and shopping so the family can get back to the table. '
+      + 'Built around the family dinner as the goal, not the grocery list as the task.',
+    href: 'https://ingle.co',
+    accent: '#B85C38',
+  },
+  {
+    name: 'Troth',
+    domain: 'troth.money',
+    tagline: 'In good troth.',
+    description:
+      'From Old English trēowþ — truth, faithfulness, the kept promise. The word in '
+      + 'plighting one\'s troth at the marriage altar. Money in a household isn\'t a math '
+      + 'problem; it\'s a relational one. Troth holds the household ledger so spouses can '
+      + 'see the same map at the same time, name what their money is for, and quiet the '
+      + 'financial-anxiety static that drives so much of the noise between people.',
+    href: 'https://troth.money',
+    accent: '#6E3A2A',
+  },
+];
+---
+
+<Base
+  title="Products — Stillpoint Labs"
+  description="Three presence tools: Reveal for photography, Ingle for the family table, and Troth for household finance."
+>
+  <section class="page-hero">
+    <div class="container-narrow">
+      <p class="eyebrow">Products</p>
+      <h1 class="page-title">Three products. One purpose.</h1>
+      <p class="page-sub">
+        Different shapes, different colors, same center. Each one asks the same question:
+        what's there when the noise falls away?
+      </p>
+    </div>
+  </section>
+
+  <section class="products-full">
+    <div class="container-narrow">
+      {products.map((p) => (
+        <ProductCard {...p} extended={true} />
+      ))}
+    </div>
+  </section>
+
+  <section class="etymology-note">
+    <div class="container-narrow">
+      <p class="eyebrow">Naming</p>
+      <p class="note-text">
+        The product names span the three biggest layers of English: Reveal (Romance, from
+        Latin <em>revelare</em>), Ingle (Celtic, from Scottish Gaelic <em>aingeal</em>),
+        Troth (Germanic, from Old English <em>trēowþ</em>). The lineup carries the deep
+        history of English as a layered language. Treat this as a feature, not a flaw to
+        reconcile.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .page-hero .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--text-3xl);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: var(--leading-tight);
+  }
+
+  .page-sub {
+    font-size: var(--text-lg);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+    line-height: var(--leading-relaxed);
+  }
+
+  .products-full {
+    padding: var(--space-4) 0 var(--space-12);
+  }
+
+  .etymology-note {
+    padding: var(--space-12) 0;
+    border-top: 1px solid var(--bone-muted);
+  }
+
+  .etymology-note .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .note-text {
+    font-size: var(--text-base);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+    line-height: var(--leading-relaxed);
+  }
+</style>

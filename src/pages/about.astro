@@ -1,0 +1,221 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About — Stillpoint Labs"
+  description="Stillpoint Labs is built around a single conviction: technology should give people their lives back, not consume them."
+>
+  <section class="page-hero">
+    <div class="container-narrow">
+      <p class="eyebrow">About</p>
+      <h1 class="page-title">Built for the still point.</h1>
+    </div>
+  </section>
+
+  <section class="philosophy">
+    <div class="container-narrow prose">
+      <p>
+        Stillpoint Labs is a one-person software company in Utah. We build tools that clear
+        away the noise so people can be present for what matters.
+      </p>
+      <p>
+        Every product we ship removes an obstacle between a person and the moments that define
+        their life — the hammock at the end of a long day, the family dinner, the photograph
+        that captures something real, the vista at the end of the trail.
+      </p>
+      <p>
+        We don't build productivity tools. We build presence tools.
+      </p>
+    </div>
+  </section>
+
+  <section class="founder-note">
+    <div class="container-narrow">
+      <p class="eyebrow">Founder's note</p>
+      <blockquote class="founder-quote">
+        <p>
+          "I want to build the apps that make it so I have more time for living in the real
+          world with my family and having to spend less of it on the hum-drum of bills,
+          groceries and meals, spending tons of time editing photos as a hobbyist and still
+          being disappointed with the results."
+        </p>
+      </blockquote>
+      <blockquote class="founder-quote">
+        <p>
+          "I want to build a business for people, by people. We always start by asking what
+          is right for our customers and then what is right for the employees. My ambition is
+          to build a company that focuses on building people, families, lives over chasing
+          exits and profits."
+        </p>
+      </blockquote>
+      <p class="founder-attr">— Noah Goodrich, founder</p>
+    </div>
+  </section>
+
+  <section class="naming">
+    <div class="container-narrow">
+      <p class="eyebrow">The name</p>
+      <div class="prose">
+        <p>
+          The name comes from T.S. Eliot's <em>Four Quartets</em>: <em>"At the still point
+          of the turning world&#8230; there the dance is."</em>
+        </p>
+        <p>
+          The still point is the center that doesn't move while everything spins around it.
+          Every tradition has a word for this — <em>menucha</em> (Hebrew: deep rest),
+          <em>wu wei</em> (Taoism: effortless being), <em>ma</em> (Japanese: the meaningful
+          pause), <em>sati</em> (Buddhism: present-moment awareness).
+        </p>
+        <p>
+          The still point isn't something you create. It's something you uncover by removing
+          what's in the way. That's what every Stillpoint Labs product does.
+        </p>
+      </div>
+
+      <div class="verbs-section">
+        <p class="verbs-label eyebrow">Verbs of arrival</p>
+        <p class="verbs-text">
+          Every product is named after what happens when you reach the still point — the
+          moment when the noise drops and you're present. These are quiet words. Not
+          productivity words, not achievement words. Words of <em>being there.</em>
+        </p>
+        <ul class="product-etymologies">
+          <li>
+            <strong>Reveal</strong> — from Latin <em>revelare</em>. The moment you discover
+            what was in your photo all along.
+          </li>
+          <li>
+            <strong>Ingle</strong> — from Scottish Gaelic <em>aingeal</em>, the hearth fire.
+            The warm center of the home where the family gathered.
+          </li>
+          <li>
+            <strong>Troth</strong> — from Old English <em>trēowþ</em>, the kept promise.
+            The word in plighting one's troth at the marriage altar.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .page-hero .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--text-3xl);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: var(--leading-tight);
+  }
+
+  .philosophy {
+    padding: var(--space-4) 0 var(--space-10);
+  }
+
+  .philosophy .prose p {
+    font-size: var(--text-lg);
+    color: var(--pitch-light);
+  }
+
+  .founder-note {
+    padding: var(--space-10) 0;
+    border-top: 1px solid var(--bone-muted);
+  }
+
+  .founder-note .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .founder-quote {
+    border-left: 2px solid var(--stillwater);
+    padding-left: var(--space-4);
+    margin-left: 0;
+  }
+
+  .founder-quote p {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-style: italic;
+    line-height: var(--leading-snug);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+  }
+
+  .founder-attr {
+    font-size: var(--text-sm);
+    color: var(--mid);
+    max-width: none;
+  }
+
+  .naming {
+    padding: var(--space-10) 0 var(--space-12);
+    border-top: 1px solid var(--bone-muted);
+  }
+
+  .naming .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .naming .prose p {
+    font-size: var(--text-base);
+    color: var(--pitch-light);
+  }
+
+  .verbs-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .verbs-label {
+    margin-bottom: 0;
+  }
+
+  .verbs-text {
+    font-size: var(--text-base);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+  }
+
+  .product-etymologies {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-left: 0;
+  }
+
+  .product-etymologies li {
+    font-size: var(--text-base);
+    color: var(--pitch-light);
+    line-height: var(--leading-relaxed);
+    padding-left: 1.25rem;
+    position: relative;
+    max-width: var(--measure);
+  }
+
+  .product-etymologies li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--mid);
+  }
+
+  .product-etymologies strong {
+    font-weight: 600;
+    color: var(--pitch);
+  }
+</style>

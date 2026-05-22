@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+import ProductCard from '../components/ProductCard.astro';
+import RippleMark from '../components/RippleMark.astro';
+
+const products = [
+  {
+    name: 'Reveal',
+    domain: 'reveal.photo',
+    tagline: 'The photograph you meant to take was already there.',
+    description:
+      'Upload your phone photos. We select the right photographic philosophy for each one, '
+      + 'write specific direction, and render a finished piece with an artist statement '
+      + 'explaining what we saw.',
+    href: 'https://reveal.photo',
+    accent: '#C4933F',
+  },
+  {
+    name: 'Ingle',
+    domain: 'ingle.co',
+    tagline: 'The family table, tended.',
+    description:
+      'Meal planning, grocery lists, and shopping handled — so your family can get back to '
+      + 'the table. Built around the family dinner as the goal, not the grocery list as the task.',
+    href: 'https://ingle.co',
+    accent: '#B85C38',
+  },
+  {
+    name: 'Troth',
+    domain: 'troth.money',
+    tagline: 'In good troth.',
+    description:
+      'A household budget so spouses can see the same map at the same time, name what their '
+      + 'money is for, and quiet the static that drives so much of the noise between people.',
+    href: 'https://troth.money',
+    accent: '#6E3A2A',
+  },
+];
+---
+
+<Base
+  title="Stillpoint Labs — the still water at the center of things"
+  description="We build tools that clear away the noise so people can be present for what matters."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner container-narrow">
+      <div class="hero-mark">
+        <RippleMark size={72} class="ripple-hero" />
+      </div>
+      <h1 class="hero-headline">
+        The still water at the center of things.
+      </h1>
+      <p class="hero-sub">
+        We build tools that clear away the noise so people can be present for
+        what matters.
+      </p>
+    </div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="manifesto">
+    <div class="manifesto-inner container-narrow">
+      <p class="eyebrow">What we build</p>
+      <div class="prose">
+        <p>
+          Technology should give people their lives back, not consume them. Every product we
+          ship removes an obstacle between a person and the moments that define their life —
+          the hammock at the end of a long day, the family dinner, the photograph that
+          captures something real, the vista at the end of the trail.
+        </p>
+        <p>
+          We don't build productivity tools. We build presence tools.
+        </p>
+        <p>
+          The name comes from T.S. Eliot's <em>Four Quartets</em>: <em>"At the still point of
+          the turning world&#8230; there the dance is."</em> The still point is the center
+          that doesn't move while everything spins around it. Every Stillpoint Labs product
+          does one thing: uncovers it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products preview -->
+  <section class="products-preview">
+    <div class="products-inner container-narrow">
+      <p class="eyebrow">Products</p>
+      <div class="products-list">
+        {products.map((p) => (
+          <ProductCard {...p} extended={false} />
+        ))}
+      </div>
+      <a href="/products/" class="all-products-link">
+        All products &rarr;
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .hero {
+    padding: var(--space-16) 0 var(--space-12);
+  }
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .ripple-hero {
+    color: var(--stillwater);
+  }
+
+  .hero-headline {
+    font-size: var(--text-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: var(--leading-tight);
+    max-width: 18ch;
+  }
+
+  .hero-sub {
+    font-size: var(--text-lg);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ── Manifesto ── */
+  .manifesto {
+    padding: var(--space-12) 0;
+    border-top: 1px solid var(--bone-muted);
+  }
+
+  .manifesto-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .manifesto .prose p {
+    font-size: var(--text-lg);
+    color: var(--pitch-light);
+  }
+
+  /* ── Products preview ── */
+  .products-preview {
+    padding: var(--space-12) 0;
+  }
+
+  .products-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .products-list {
+    margin-top: var(--space-2);
+  }
+
+  .all-products-link {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--stillwater);
+    text-decoration: none;
+  }
+
+  .all-products-link:hover {
+    color: var(--stillwater);
+    opacity: 0.75;
+    text-decoration: none;
+  }
+</style>

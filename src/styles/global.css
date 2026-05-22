@@ -1,0 +1,251 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Stillpoint Labs — global styles
+   Brand: Stillpoint Labs. Aesthetic: craft publisher, not SaaS.
+   ────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Brand color tokens — from stillpoint_brand_architecture.md + brand_guide_stillpoint_labs.html */
+  --bone:          #F2EDE4;
+  --bone-muted:    #E5DFD4;
+  --pitch:         #141210;
+  --pitch-light:   #3A3632;
+  --mid:           #8A847A;
+  --stillwater:    #5B7D8A;
+  --golden-hour:   #C4933F;
+  --ember:         #B85C38;
+  --heartwood:     #6E3A2A;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Apple Garamond', 'Iowan Old Style',
+    'Palatino Linotype', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui,
+    sans-serif;
+
+  /* Type scale */
+  --text-micro:   0.6875rem;  /* 11px */
+  --text-sm:      0.9375rem;  /* 15px */
+  --text-base:    1.0625rem;  /* 17px */
+  --text-lg:      1.25rem;    /* 20px */
+  --text-xl:      1.625rem;   /* 26px */
+  --text-2xl:     2.25rem;    /* 36px */
+  --text-3xl:     3rem;       /* 48px */
+  --text-display: clamp(2.75rem, 6vw, 5.25rem);
+
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Measure */
+  --measure:      32rem;
+  --measure-wide: 44rem;
+
+  /* Spacing */
+  --space-1:  0.5rem;
+  --space-2:  1rem;
+  --space-3:  1.5rem;
+  --space-4:  2rem;
+  --space-6:  3rem;
+  --space-8:  4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+  --space-24: 12rem;
+
+  /* Rules */
+  --rule:        rgba(20, 18, 16, 0.08);
+  --rule-strong: rgba(20, 18, 16, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bone);
+  color: var(--pitch);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+  color: var(--pitch);
+}
+
+h1 {
+  font-size: var(--text-display);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+p {
+  max-width: var(--measure);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+a {
+  color: var(--pitch);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(20, 18, 16, 0.35);
+  transition: text-decoration-color 200ms ease, color 200ms ease;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration-color: var(--stillwater);
+  color: var(--stillwater);
+}
+
+button,
+.button {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  cursor: pointer;
+  border: 1px solid var(--pitch);
+  background: var(--pitch);
+  color: var(--bone);
+  padding: 0.85rem 1.5rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+button:hover,
+.button:hover {
+  background: var(--pitch-light);
+  border-color: var(--pitch-light);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--pitch);
+  border: 1px solid var(--pitch);
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.button-outline:hover {
+  background: var(--bone-muted);
+}
+
+/* Layout helpers */
+.container {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.prose > * + * {
+  margin-top: var(--space-3);
+}
+
+.prose p {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.prose h2 {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-xl);
+}
+
+/* Eyebrow / section labels */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.fine {
+  font-style: italic;
+  color: rgba(20, 18, 16, 0.65);
+  font-size: var(--text-sm);
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--pitch);
+  color: var(--bone);
+  padding: 0.75rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

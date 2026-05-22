@@ -1,0 +1,143 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Contact — Stillpoint Labs"
+  description="Get in touch with Stillpoint Labs."
+>
+  <section class="page-hero">
+    <div class="container-narrow">
+      <p class="eyebrow">Contact</p>
+      <h1 class="page-title">Say hello.</h1>
+    </div>
+  </section>
+
+  <section class="contact-body">
+    <div class="container-narrow">
+      <p class="contact-lead">
+        Questions about Stillpoint Labs or our products? We'd like to hear from you.
+      </p>
+
+      <div class="contact-email">
+        <p class="eyebrow">Email</p>
+        <a
+          href="mailto:hello@stillpointlabs.dev"
+          class="email-link"
+        >
+          hello@stillpointlabs.dev
+        </a>
+        <p class="email-note fine">
+          Note: this address is not yet active. In the meantime, reach Noah directly
+          at <a href="mailto:goodrich.noah@gmail.com">goodrich.noah@gmail.com</a>.
+        </p>
+      </div>
+
+      <div class="product-links">
+        <p class="eyebrow">Products</p>
+        <ul class="product-contact-list">
+          <li>
+            <strong>Reveal</strong> —
+            <a href="https://reveal.photo" rel="noopener">reveal.photo</a>
+          </li>
+          <li>
+            <strong>Ingle</strong> —
+            <a href="https://ingle.co" rel="noopener">ingle.co</a>
+          </li>
+          <li>
+            <strong>Troth</strong> —
+            <a href="https://troth.money" rel="noopener">troth.money</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .page-hero .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--text-3xl);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: var(--leading-tight);
+  }
+
+  .contact-body {
+    padding: var(--space-4) 0 var(--space-16);
+  }
+
+  .contact-body .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .contact-lead {
+    font-size: var(--text-lg);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+    line-height: var(--leading-relaxed);
+  }
+
+  .contact-email {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .email-link {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--stillwater);
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 150ms ease;
+  }
+
+  .email-link:hover {
+    opacity: 0.75;
+    color: var(--stillwater);
+    text-decoration: none;
+  }
+
+  .email-note {
+    max-width: var(--measure);
+    font-size: var(--text-sm);
+    color: var(--mid);
+  }
+
+  .product-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .product-contact-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .product-contact-list li {
+    font-size: var(--text-base);
+    color: var(--pitch-light);
+    max-width: none;
+  }
+
+  .product-contact-list strong {
+    font-weight: 600;
+    color: var(--pitch);
+  }
+</style>

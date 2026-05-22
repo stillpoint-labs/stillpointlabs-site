@@ -1,0 +1,117 @@
+---
+/**
+ * ProductCard — used on the home preview and the /products page.
+ * Each product has a name, tagline, description, link, and accent color.
+ */
+interface Props {
+  name: string;
+  tagline: string;
+  description: string;
+  href: string;
+  accent: string;
+  /** Short domain label, e.g. "reveal.photo" */
+  domain: string;
+  /** Whether to show an extended description (products page) vs short (home preview) */
+  extended?: boolean;
+}
+
+const {
+  name,
+  tagline,
+  description,
+  href,
+  accent,
+  domain,
+  extended = false,
+} = Astro.props;
+---
+
+<article class="product-card" style={`--accent: ${accent};`}>
+  <div class="product-dot" aria-hidden="true"></div>
+  <div class="product-body">
+    <p class="product-domain eyebrow">{domain}</p>
+    <h3 class="product-name">{name}</h3>
+    <p class="product-tagline"><em>{tagline}</em></p>
+    {extended && <p class="product-description">{description}</p>}
+    <a href={href} class="product-link" rel="noopener">
+      Visit {name}
+      <span aria-hidden="true"> &rarr;</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .product-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--bone-muted);
+  }
+
+  .product-card:last-child {
+    border-bottom: 1px solid var(--bone-muted);
+  }
+
+  .product-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .product-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .product-domain {
+    max-width: none;
+    margin-bottom: 0.25rem;
+  }
+
+  .product-name {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    color: var(--pitch);
+  }
+
+  .product-tagline {
+    font-size: var(--text-lg);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+    font-family: var(--font-display);
+  }
+
+  .product-description {
+    font-size: var(--text-base);
+    color: var(--pitch-light);
+    max-width: var(--measure);
+    margin-top: 0.5rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  .product-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: opacity 150ms ease;
+  }
+
+  .product-link:hover,
+  .product-link:focus-visible {
+    opacity: 0.75;
+    text-decoration: none;
+    color: var(--accent);
+  }
+</style>

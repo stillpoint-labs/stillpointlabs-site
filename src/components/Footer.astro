@@ -1,0 +1,121 @@
+---
+import RippleMark from './RippleMark.astro';
+---
+
+<footer class="site-footer">
+  <div class="footer-inner container">
+    <div class="footer-stamp">
+      <RippleMark size={48} class="ripple-footer" />
+      <p class="footer-name">Stillpoint Labs</p>
+      <p class="footer-tagline">
+        <em>At the still point of the turning world.</em>
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/products/">Products</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+
+    <div class="footer-products">
+      <a href="https://reveal.photo" rel="noopener" class="product-link">Reveal</a>
+      <a href="https://ingle.co" rel="noopener" class="product-link">Ingle</a>
+      <a href="https://troth.money" rel="noopener" class="product-link">Troth</a>
+    </div>
+
+    <p class="footer-copy">
+      &copy; {new Date().getFullYear()} Stillpoint Labs LLC
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--bone-muted);
+    padding: var(--space-12) 0 var(--space-8);
+    margin-top: var(--space-16);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .footer-stamp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ripple-footer {
+    color: var(--stillwater);
+    opacity: 0.7;
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+    max-width: none;
+  }
+
+  .footer-tagline {
+    font-size: var(--text-sm);
+    color: var(--mid);
+    max-width: none;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-nav a {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .footer-nav a:hover {
+    color: var(--pitch);
+  }
+
+  .footer-products {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .product-link {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .product-link:hover {
+    color: var(--stillwater);
+    text-decoration: none;
+  }
+
+  .footer-copy {
+    font-size: var(--text-micro);
+    letter-spacing: 0.06em;
+    color: var(--mid);
+    max-width: none;
+  }
+</style>
