@@ -134,6 +134,26 @@ The allowlist is: `reveal`, `troth`, `ingle`, `stillpoint`, `xschema`, `grants`.
 Any migration file whose schema tag is not in this list fails CI (Check A). Adding a new schema tag
 requires updating both `scripts/lint-migrations.sh` and this document.
 
+### App/tenant tag vs. target Postgres schema
+
+The filename's schema field is an **app/tenant tag** — a routing label, not a literal `search_path`
+target. For most apps the tag equals the target Postgres schema 1:1, but the two are distinct concepts
+and MUST NOT be conflated. The one divergence today is **reveal: the `reveal` tag maps to the `public`
+schema** (Reveal still owns `public`; the `public`→`reveal` schema move is parked — see the conformance
+ledger below).
+
+| App/tenant tag | Target Postgres schema (today)            |
+|----------------|-------------------------------------------|
+| `reveal`       | `public` (tag → `public`; move to `reveal` parked) |
+| `troth`        | `troth`                                   |
+| `ingle`        | `ingle` (on the separate ingle project)   |
+| `stillpoint`   | `stillpoint`                              |
+| `xschema`      | (spans multiple schemas)                  |
+| `grants`       | (role grants only; no schema DDL)         |
+
+When the reveal `public`→`reveal` move lands, this mapping — not the tag — is what changes; the tag
+stays `reveal`.
+
 ---
 
 ## Load-bearing rules
@@ -147,6 +167,10 @@ through the pipeline.
 
 The one exception is the snapshot-as-baseline bootstrap step (ADR-005), which is a one-time
 human-gated operation, not a recurring pattern.
+
+> **Note:** the production applier MUST pin the Supabase CLI to a fixed version (never `latest`) so
+> apply behaviour is reproducible across runs and a silent CLI bump can never change how a migration is
+> applied.
 
 **Why:** hand-applied changes produce migration-history drift and an unreproducible production schema.
 The current stillpoint state was caused by exactly this pattern. Every schema change must acquire a
@@ -368,6 +392,33 @@ bash scripts/lint-migrations.sh supabase/migrations/*.sql
 After consolidation, both rule-sets will run via a single invocation.
 
 ---
+
+## Per-app conformance ledger
+
+This table is the live snapshot of how each product currently conforms to this standard. It separates
+the filename **app/tenant tag** from the **target Postgres schema** (they diverge for reveal today) and
+records ledger ownership, lint coverage, the apply-gate, and the cutover state. The single canonical
+ledger repo is **`stillpoint-labs/stillpoint`**.
+
+| App | Target Postgres schema | Ledger ownership | Lint status | Apply-gate | Current cutover state |
+|-----|------------------------|------------------|-------------|------------|-----------------------|
+| **stillpoint** | `stillpoint` (+ shared identity base tables) | Authoritative single ledger (owns all schemas) | Strict (rule-sets A + B) | `workflow_dispatch` (human-gated apply) | Live — steady state / authoritative |
+| **troth** | `troth` | stillpoint (troth migrations frozen) | Governed by the stillpoint ledger lint | `workflow_dispatch` via stillpoint pipeline | In soak → PR-C (contract) ~2026-07-02 |
+| **reveal** | `public` (filename tag is `reveal`) | stillpoint (reveal migrations frozen) | Alembic retained test-only (not an applier) | Frozen — no live applies | `public`→`reveal` schema move **PARKED** |
+| **ingle** | `ingle` (separate live project) | Separate ingle ledger (own project + CI) | Destructive-DDL gate (rule-set B) | **Auto-apply on push — NON-conformant (ADR-009)** | Fold-in applied; live cutover ~2026-07-28 |
+
+Notes:
+
+- **ingle runs on a separate live Supabase project** (`muyxsjvgybpyaapccmaz`), not the shared
+  `jmgjznimsrlcgyevefqm` project, with its own migration ledger and CI. This is the main standing
+  divergence from this standard.
+- **ingle auto-applies migrations on push**, which is NON-conformant to ADR-009 (pipeline applies must
+  be human-gated, not automatic). Reconciliation is tracked as part of the ingle fold-in; the live
+  cutover onto the shared project is targeted for ~2026-07-28.
+- **reveal's `reveal` tag maps to the `public` schema today.** Its migrations are frozen and Alembic is
+  retained for tests only — it does not apply schema changes. The `public`→`reveal` move is parked.
+- **troth migrations are frozen**; the stillpoint ledger owns them. Troth is in a production soak ahead
+  of the PR-C contract step (the `stillpoint.identities` lockdown described above), targeted ~2026-07-02.
 
 ## Relationship to other standards
 
