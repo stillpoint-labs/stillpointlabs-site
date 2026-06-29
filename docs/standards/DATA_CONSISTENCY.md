@@ -282,13 +282,13 @@ When in doubt about how to structure a new product's consistency layer, read tho
 This document owns the **consistency pattern** — where a derived value is computed and how every surface reads from
 it. Two sibling standards are planned and overlap at the edges:
 
-- **TESTING.md** (forthcoming) owns the *testing-methodology* layer. Golden, fitness, and property-based tests appear
-  in both documents because they serve consistency *and* general correctness. Where they overlap, TESTING.md is the
-  authority on *how to write the test*; this document is the authority on *what consistency property the test must
-  assert* (cross-surface agreement, with one side golden-pinned).
-- **DATA_PIPELINES.md** (forthcoming) owns import/ETL and the raw-fact ingestion path. The boundary: pipelines
-  produce and store *raw facts*; this standard governs the *derived values* computed from them. The Agoda case sits
-  on the seam — its lesson (one canonical pipeline) informs both.
+- **TESTING.md** (sibling, authoritative) owns the *testing-methodology* layer. Golden, fitness, and
+  property-based tests appear in both documents because they serve consistency *and* general correctness. Where they
+  overlap, TESTING.md is the authority on *how to write the test*; this document is the authority on *what consistency
+  property the test must assert* (cross-surface agreement, with one side golden-pinned).
+- **DATA_PIPELINES.md** (sibling, authoritative) owns import/ETL and the raw-fact ingestion path. The boundary:
+  pipelines produce and store *raw facts*; this standard governs the *derived values* computed from them. The Agoda
+  case sits on the seam — its lesson (one canonical pipeline) informs both.
 
 The shared color-science standard
 (`stillpointlabs-site/docs/principles/2026-05-26-color-science-stillpoint.md`) is the format template this document

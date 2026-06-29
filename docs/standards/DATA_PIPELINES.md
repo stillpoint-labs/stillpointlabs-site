@@ -298,10 +298,11 @@ destination table without partial writes or loss. Two sibling standards sit adja
   destination table — this standard guarantees what lands there is whole and never duplicated; the consistency
   standard guarantees what is *computed* from it never diverges across surfaces. Agoda's one-canonical-pipeline
   lesson, cited in the consistency doc, sits on exactly this seam and informs both.
-- **`TESTING.md`** (forthcoming) owns the *testing-methodology* layer. The integration tests cited throughout this
-  document — atomicity, idempotency, SKIP-LOCKED concurrency, crash-recovery, backoff/quarantine, cross-household
-  isolation — are the proof harness for this pattern. Where they overlap, `TESTING.md` is the authority on *how to
-  structure the test*; this document is the authority on *what pipeline guarantee the test must assert*.
+- **`TESTING.md`** (sibling, authoritative) owns the *testing-methodology* layer. The integration tests cited
+  throughout this document — atomicity, idempotency, SKIP-LOCKED concurrency, crash-recovery, backoff/quarantine,
+  cross-household isolation — are the proof harness for this pattern. Where they overlap, `TESTING.md` is the
+  authority on *how to structure the test*; this document is the authority on *what pipeline guarantee the test must
+  assert*.
 
 The shared color-science standard (`docs/principles/2026-05-26-color-science-stillpoint.md`) is the format template this
 document mirrors; it is otherwise unrelated in subject.
