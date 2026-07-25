@@ -42,7 +42,6 @@ services:
     ports:
       - "4323:4321"
     volumes:
-      - ~/.claude:/home/dev/.claude:cached
       - ~/.config/dotfiles/claude:/home/dev/.config/dotfiles/claude:cached
       - ~/.config/borg:/home/dev/.config/borg:cached
       # host home read-only — postStartCommand copies .claude.json fresh each start
