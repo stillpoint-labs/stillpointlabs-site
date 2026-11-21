@@ -58,7 +58,7 @@ const contact = 'noah@stillpointlabs.dev';
           Stillpoint account, so one email never becomes two accounts.
         </li>
         <li><strong>Name</strong> — as your display name inside the apps.</li>
-        <li><strong>Profile picture</strong> — stored with your sign-in record. No app shows it today.</li>
+        <li><strong>Profile picture</strong> — stored with your sign-in record; apps may show it next to your name.</li>
       </ul>
       <p>
         Our sign-in provider, Supabase, stores this Google data, and it goes to no one else. We
@@ -123,17 +123,16 @@ const contact = 'noah@stillpointlabs.dev';
 
       <h2>Who else handles your data</h2>
       <p>
-        Besides the AI providers above, these companies run parts of the service and receive
-        only what their part needs:
+        Besides the AI providers above, a few service providers run parts of the service, and
+        each receives only what its part needs:
       </p>
       <ul>
-        <li><strong>Supabase</strong> — database, file storage, sign-in and sign-in emails, for all three apps.</li>
-        <li><strong>Cloudflare</strong> — hosts our websites and apps.</li>
-        <li><strong>Fly.io</strong> — runs Reveal's photo processing.</li>
-        <li><strong>OpenStreetMap (Nominatim)</strong> — a Reveal photo's GPS coordinates, to look up the place name.</li>
+        <li><strong>Supabase</strong> — database, file storage and sign-in, for all three apps.</li>
         <li><strong>Plaid</strong> — Troth's bank connections, only if you connect a bank.</li>
-        <li><strong>Resend</strong> — Ingle's household invitation emails.</li>
-        <li><strong>Loops and Buttondown</strong> — the Reveal waitlist and Ingle newsletter, only if you sign up.</li>
+        <li><strong>Hosting providers</strong> — run our websites, apps and photo processing.</li>
+        <li><strong>Email services</strong> — deliver sign-in links and household invitations.</li>
+        <li><strong>Mailing-list services</strong> — product waitlists and newsletters, only if you sign up.</li>
+        <li><strong>A mapping service</strong> — a Reveal photo's GPS coordinates, to name the place.</li>
       </ul>
       <p>
         We do not sell your data or share it for advertising. We disclose it beyond these
@@ -143,9 +142,8 @@ const contact = 'noah@stillpointlabs.dev';
 
       <h2>Cookies</h2>
       <p>
-        The apps set only the cookies that keep you signed in, plus a few settings saved in your
-        browser. stillpointlabs.dev sets no cookies. Neither this site nor the apps run
-        advertising or analytics trackers.
+        This site and the apps use cookies and browser storage only to keep you signed in and
+        remember your settings. None of them run advertising or analytics trackers.
       </p>
 
       <h2>Keeping and deleting your data</h2>
@@ -159,13 +157,11 @@ const contact = 'noah@stillpointlabs.dev';
         <li>Write to the same address for a copy of your data or to correct it.</li>
         <li>Every mailing-list email carries an unsubscribe link.</li>
       </ul>
-      <p>The apps have no delete button yet, so deletion runs through email for now.</p>
 
       <h2>Security</h2>
       <p>
-        Data travels over HTTPS. Database rules limit each account to its own household's data.
-        Troth stores bank-connection tokens encrypted. If a breach exposes your data, we will tell
-        you.
+        Data travels over HTTPS, and database rules limit each account to its own household's
+        data. If a breach exposes your data, we will tell you.
       </p>
 
       <h2>Children</h2>
