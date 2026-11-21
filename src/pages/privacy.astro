@@ -1,0 +1,249 @@
+---
+import Base from '../layouts/Base.astro';
+
+const effective = '17 November 2026';
+const contact = 'noah@stillpointlabs.dev';
+---
+
+<Base
+  title="Privacy — Stillpoint Labs"
+  description="What Stillpoint Labs keeps for Reveal, Ingle and Troth, who else handles it, and how to delete it."
+>
+  <section class="page-hero">
+    <div class="container-narrow">
+      <p class="eyebrow">Privacy</p>
+      <h1 class="page-title">We keep only what the work needs.</h1>
+      <p class="effective fine">Effective {effective}</p>
+    </div>
+  </section>
+
+  <article class="policy">
+    <div class="container-narrow prose">
+      <p class="lede">
+        Stillpoint Labs makes Reveal, Ingle and Troth, and all three share one Stillpoint
+        account. We keep what you put into them so they can do their work for you. We do not
+        sell your data, show you ads, or train AI models on it without your separate, explicit
+        consent.
+      </p>
+
+      <h2>What this covers</h2>
+      <p>
+        This policy covers stillpointlabs.dev and the Stillpoint account you use to sign in to
+        Reveal (app.reveal.photo), Ingle (app.ingle.kitchen) and Troth (app.troth.money). Each
+        product's own site can add detail for that product. Questions go to
+        <a href={`mailto:${contact}`}>{contact}</a>.
+      </p>
+
+      <h2>Your Stillpoint account</h2>
+      <p>
+        One account, keyed to one email address, works across all three apps. You sign in with
+        a link we email you, or with Google where an app offers it. For the account we keep:
+      </p>
+      <ul>
+        <li>your email address and an account ID</li>
+        <li>a display name, taken from your Google profile or your email address</li>
+        <li>sign-in records, including the time and IP address of each sign-in, for security</li>
+      </ul>
+
+      <h2>Signing in with Google</h2>
+      <p>
+        When you choose Continue with Google, Google sends us your email address, whether Google
+        has verified it, your name, your profile picture and a Google account ID. We ask Google
+        for nothing else: no access to your Gmail, Drive, Calendar, Contacts or any other Google
+        data. We use what Google sends for three things:
+      </p>
+      <ul>
+        <li>
+          <strong>Email and account ID</strong> — to sign you in and match you to your existing
+          Stillpoint account, so one email never becomes two accounts.
+        </li>
+        <li><strong>Name</strong> — as your display name inside the apps.</li>
+        <li><strong>Profile picture</strong> — stored with your sign-in record; apps may show it next to your name.</li>
+      </ul>
+      <p>
+        Our sign-in provider, Supabase, stores this Google data, and it goes to no one else. We
+        do not sell it, use it for advertising, or use it to develop, improve or train AI or
+        machine-learning models. Nobody at Stillpoint Labs reads it unless you ask us to, it is
+        needed for security, or the law requires it.
+      </p>
+      <p>
+        Stillpoint Labs' use and transfer of information received from Google APIs adheres to the
+        <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener"
+          >Google API Services User Data Policy</a
+        >, including the Limited Use requirements.
+      </p>
+      <p>
+        To remove our access, open your
+        <a href="https://myaccount.google.com/permissions" rel="noopener">Google Account permissions</a>
+        and remove Stillpoint Labs. You can still sign in with an emailed link.
+      </p>
+
+      <h2>What each app keeps</h2>
+      <ul>
+        <li>
+          <strong>Reveal</strong> — the photographs you submit, with their embedded details
+          (camera settings and, when present, GPS location); the developed images and artist
+          statements made from them; your ratings and feedback.
+        </li>
+        <li>
+          <strong>Ingle</strong> — your pantry, grocery lists, shopping trips and purchase
+          history, including orders you import; budgets and meal plans; your household's members
+          and their dietary preferences; photos you take to add pantry items.
+        </li>
+        <li>
+          <strong>Troth</strong> — your accounts (name, type, and only the last four digits of
+          the number), transactions, balances, bills, income and goals. It comes from what you
+          type, from CSV files you upload (we keep the rows and do not store the file), or from
+          Plaid if you connect a bank.
+        </li>
+      </ul>
+      <p>Each app also keeps operational logs, which we use to fix problems and protect the service.</p>
+
+      <h2>AI features</h2>
+      <p>
+        The apps use AI models from Anthropic (Claude) and Google (Gemini). We send each one only
+        what the feature in front of you needs:
+      </p>
+      <ul>
+        <li>
+          <strong>Reveal</strong> — your photograph and our notes on it to Anthropic, and the
+          photograph with developing instructions to Google.
+        </li>
+        <li><strong>Ingle</strong> — pantry photos and item details to Anthropic, to identify what you have.</li>
+        <li>
+          <strong>Troth</strong> — payee names to Anthropic for automatic categorization; when you
+          use Ask, your question and the account data needed to answer it.
+        </li>
+      </ul>
+      <p>
+        If you connect Claude or another assistant to Ingle or Troth, it reads and changes your
+        data through the access you approve, and its maker's terms cover what it does with that
+        data. Disconnect it in the assistant's settings to end that access.
+      </p>
+
+      <h2>Who else handles your data</h2>
+      <p>
+        Besides the AI providers above, a few service providers run parts of the service, and
+        each receives only what its part needs:
+      </p>
+      <ul>
+        <li><strong>Supabase</strong> — database, file storage and sign-in, for all three apps.</li>
+        <li><strong>Plaid</strong> — Troth's bank connections, only if you connect a bank.</li>
+        <li><strong>Hosting providers</strong> — run our websites, apps and photo processing.</li>
+        <li><strong>Email services</strong> — deliver sign-in links and household invitations.</li>
+        <li><strong>Mailing-list services</strong> — product waitlists and newsletters, only if you sign up.</li>
+        <li><strong>A mapping service</strong> — a Reveal photo's GPS coordinates, to name the place.</li>
+      </ul>
+      <p>
+        We do not sell your data or share it for advertising. We disclose it beyond these
+        providers only when the law requires it, or to a company that takes over Stillpoint
+        Labs, which would then be bound by this policy.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        This site and the apps use cookies and browser storage only to keep you signed in and
+        remember your settings. None of them run advertising or analytics trackers.
+      </p>
+
+      <h2>Keeping and deleting your data</h2>
+      <ul>
+        <li>We keep your data while your account is open.</li>
+        <li>
+          To delete your account, email <a href={`mailto:${contact}`}>{contact}</a> from the
+          address on the account. We delete the account and its data in all three apps within 30
+          days. If you share a household, its shared records stay with the other members.
+        </li>
+        <li>Write to the same address for a copy of your data or to correct it.</li>
+        <li>Every mailing-list email carries an unsubscribe link.</li>
+      </ul>
+
+      <h2>Security</h2>
+      <p>
+        Data travels over HTTPS, and database rules limit each account to its own household's
+        data. If a breach exposes your data, we will tell you.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        Accounts are for adults. A parent can list children as members of an Ingle household,
+        with their dietary preferences, and we treat that like the rest of the household's data.
+        We do not knowingly open accounts for children under 13.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        When this policy changes, the date at the top changes with it. If a change affects data
+        you have already given us, we email you before it takes effect.
+      </p>
+
+      <p class="meta fine">
+        Stillpoint Labs LLC, Utah · <a href={`mailto:${contact}`}>{contact}</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-hero {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .page-hero .container-narrow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--text-3xl);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: var(--leading-tight);
+  }
+
+  .policy {
+    padding: var(--space-4) 0 var(--space-12);
+  }
+
+  .policy .prose p,
+  .policy .prose li {
+    font-size: var(--text-base);
+    color: var(--pitch-light);
+  }
+
+  .policy .prose .lede {
+    font-size: var(--text-lg);
+  }
+
+  .policy ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .policy li {
+    line-height: var(--leading-relaxed);
+    padding-left: 1.25rem;
+    position: relative;
+    max-width: var(--measure);
+  }
+
+  .policy li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--mid);
+  }
+
+  .policy strong {
+    font-weight: 600;
+    color: var(--pitch);
+  }
+
+  .meta {
+    margin-top: var(--space-8);
+  }
+</style>
